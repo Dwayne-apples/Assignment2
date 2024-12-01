@@ -1,0 +1,17 @@
+.div {
+    padding: 20px;
+    width: 60px; 
+    height: 30px; 
+    margin-top: 10px; 
+    border: 10px solid blue;
+}
+
+ul li:nth-child(even){
+    background-color: lightcoral;
+    width: 500px;
+    
+}
+ul li:nth-child(odd){
+    background-color: darkgreen;
+    width: 500px;
+}

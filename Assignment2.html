@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Assignemnt 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="clickedButton" onclick="Clicked()">Click Me!</button>
+
+    <ul id="list" onclick= "addItem()">
+        <li>1st item</li>
+        <li>2nd item</li>
+        <li>3rd item</li>
+    </ul>
+
+    <div class="div" id="box" onclick="changeBackground()">Div box</div>
+
+    <script>
+        //JS Basics
+        let width = prompt("What is the width of the rectangle? ");
+        let height = prompt("What is the height of the rectagnle? ");
+        console.log("The area of the rectangle is " + changeArea(width, height));
+        function changeArea(w, h) {
+            for(let i = 0; i < 1; i++){
+                if(w <= 0 || h <= 0){
+                    do{
+                        w = prompt("What is the width of the rectangle? ");
+                    } while(w <= 0);
+                    do {
+                        h = prompt("What is the height of the rectagnle? ");
+                    } while (h <= 0);
+                    i--;
+                }
+            }
+
+            let area = w*h;
+            return area;
+        }
+        
+
+        //Event Handling
+        function Clicked() {
+            alert('Button clicked!');
+            document.getElementById("clickedButton").style.color = randomColor();
+        }
+        function randomColor() {
+            letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+
+        //Manipulating the DOM
+        function addItem() {
+            let newItem = document.createElement("li");
+            const listItems = document.querySelectorAll('#list li');  
+            const itemCount = listItems.length;
+            if(itemCount+1 == 4){
+                newItem.textContent = "Fourth item";
+            }
+            else{
+                newItem.textContent = randomLetter();
+            }
+            document.getElementById("list").appendChild(newItem);
+        }
+        function randomLetter(){
+            letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let randomLetter = '';
+            for (let i = 0; i < 6; i++) {
+                randomLetter += letters[Math.floor(Math.random() * 24)];
+            }
+            return randomLetter;
+        }
+
+
+        //CSS Box Model
+        var hoverDiv = document.getElementById('box');
+        hoverDiv.addEventListener('mouseenter', function() {
+            this.style.borderColor = 'lightblue';
+        });
+        hoverDiv.addEventListener('mouseleave', function() {
+            this.style.borderColor = 'lightpink';
+        });
+        function changeBackground() {
+            document.getElementById('box').style.backgroundColor = 'DarkRed';
+        }
+
+    </script>
+</body>
+</html>
